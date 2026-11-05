@@ -38,8 +38,13 @@ export const faq: FaqItem[] = [
       'Yes. Group Policy on Windows, a configuration profile on macOS, or a file in /etc on Linux can keep the Internet mark, require encryption, and set which kinds of passwords are allowed and how long they have to be. The settings they fix show as locked.',
   },
   {
-    question: 'How does it update?',
+    question: 'How do I install it, and how does it update?',
     answer:
-      'Once a day it looks for a newer version, in a list it believes only when its signatures verify, and a badge says so. Nothing is downloaded or installed until you ask, and the daily look can be turned off.',
+      'Download it for your system above: a .dmg for macOS, an installer for Windows, an AppImage, a .deb or an .rpm for Linux. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app, the Windows installer and the AppImage update themselves when you say so; for a .deb or an .rpm, the app shows the commands. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
+  },
+  {
+    question: 'Is there a mobile app?',
+    answer:
+      'Coming soon, for iOS and Android, to open the archives you are sent.',
   },
 ];

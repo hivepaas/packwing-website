@@ -47,10 +47,12 @@
   <text x="80" y="478" font-family="Inter, sans-serif" font-size="25" fill="#94a3b8">ZIP, RAR, 7z, tar, ISO and age. Free and open source.</text>
 
   <g font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#a5ead9">
-    <rect x="80" y="520" width="146" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
-    <text x="153" y="549" text-anchor="middle">Windows</text>
-    <rect x="240" y="520" width="112" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
-    <text x="296" y="549" text-anchor="middle">Linux</text>
-    <text x="378" y="549" fill="#5b6b82">packwing.hivepaas.com</text>
+    <rect x="80" y="520" width="128" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
+    <text x="144" y="549" text-anchor="middle">macOS</text>
+    <rect x="222" y="520" width="146" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
+    <text x="295" y="549" text-anchor="middle">Windows</text>
+    <rect x="382" y="520" width="112" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
+    <text x="438" y="549" text-anchor="middle">Linux</text>
+    <text x="520" y="549" fill="#5b6b82">packwing.hivepaas.com</text>
   </g>
 </svg>

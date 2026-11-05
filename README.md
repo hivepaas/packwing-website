@@ -18,5 +18,6 @@ yarn lint
 - **Images.** `cd landing && node og/render.mjs` renders `og/og-image.svg`, with the
   hero's screenshot, to `public/og-image.png`, and the logo to the favicons.
 - **Downloads.** `landing/src/data/downloads.ts` names the release's files as
-  packwing's `scripts/package_*.sh` name them: a new release changes `VERSION`.
+  packwing's releases name them (packwing's `docs/updates.md`): a new release changes
+  `VERSION`.
 - **Release.** A tag `vX.Y.Z` builds the image (nginx serving the static site on 3200) and pushes it to `ghcr.io/hivepaas/packwing-website`.
