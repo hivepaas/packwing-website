@@ -1,0 +1,139 @@
+---
+// Features.astro - what packwing does, in cards: the three with a picture of
+// the app first, then the rest.
+import Shot from './Shot.astro';
+
+const cards = [
+  {
+    tag: 'age built in',
+    title: 'Encrypted files, the modern way',
+    text: 'Opens and writes .age files with a passphrase, age keys, Ed25519 SSH keys and post-quantum keys.',
+  },
+  {
+    tag: 'ZIP',
+    title: 'Edit an archive in place',
+    text: 'Add, delete and rename inside a ZIP archive. The new one takes its place only once it reads back whole.',
+  },
+  {
+    tag: 'Signatures',
+    title: 'Sign what you share',
+    text: 'Sign with an SSH Ed25519 key, or a new key of Ed25519 and ML-DSA-65 together. An SSH signature checks with ssh-keygen -Y verify, without packwing.',
+  },
+  {
+    tag: 'Checksums',
+    title: 'Check a download',
+    text: 'SHA-256 and SHA-1, or SHA-512, MD5 and BLAKE3, in one pass. Paste the one from a download page, or a SHA256SUMS list, to compare; save them beside the file for sha256sum -c.',
+  },
+  {
+    tag: 'Updates',
+    title: 'Updates you can trust',
+    text: 'A daily look for a newer version, in a list believed only when its signatures verify. Nothing is downloaded or installed unless you ask.',
+  },
+  {
+    tag: 'Every day',
+    title: 'Made to feel at home',
+    text: 'An interface in 15 languages, light and dark, back and forward with your mouse, and a window that comes back as you left it.',
+  },
+];
+---
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Features</span>
+      <h2 class="section-title"><span class="text-gradient-white">Everything an archive needs.</span></h2>
+      <p class="section-desc">
+        Look inside before you extract, make archives others can open, and keep the work going in the background.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <article class="bento-card bento-span-3 card-wide">
+        <div class="wide-text">
+        <div class="bento-badge-row"><span class="badge-accent-tag">Look before you extract</span></div>
+        <h3 class="bento-title">Search all of it, see a file, take only what you need</h3>
+        <p class="bento-text">
+          A search through every folder of an archive, whatever the case and accents: <code>bao cao</code> finds
+          <code>Báo cáo</code>. Pictures and text show in a preview, and Extract takes just what is selected. A
+          password is asked once, kept in memory, and forgotten ten minutes after its last use.
+        </p>
+        </div>
+        <Shot name="preview-picture" alt="An archive's folder in packwing, with a picture from it in the preview beside the list" />
+      </article>
+
+      <article class="bento-card bento-span-3 card-wide">
+        <div class="wide-text">
+        <div class="bento-badge-row"><span class="badge-accent-tag">Writes archives</span></div>
+        <h3 class="bento-title">ZIP, 7z and tar, your way</h3>
+        <p class="bento-text">
+          ZIP, 7z, <code>.tar.gz</code>, <code>.tar.xz</code> and <code>.tar.zst</code>, with five levels, AES-256 on ZIP
+          and 7z (7z can hide the names too), and parts as 7-Zip cuts them. It tells you who can open what you make.
+        </p>
+        </div>
+        <Shot name="create-7z" alt="packwing's New archive dialog, making a 7z archive, with a note on which systems open it" />
+      </article>
+
+      <article class="bento-card bento-span-3 card-wide">
+        <div class="wide-text">
+        <div class="bento-badge-row"><span class="badge-accent-tag">In the background</span></div>
+        <h3 class="bento-title">Keep working while it works</h3>
+        <p class="bento-text">
+          Extracting, compressing, testing, copying and signing go on behind, two at a time. The Jobs page says how far
+          each is, waits for a password one needs, and the system tells you when one ends.
+        </p>
+        </div>
+        <Shot name="jobs" alt="packwing's Jobs page: an archive being extracted, one waiting for a password, and others done" />
+      </article>
+
+      <article class="bento-card bento-span-3 card-wide">
+        <div class="wide-text">
+        <div class="bento-badge-row"><span class="badge-accent-tag">In your file manager</span></div>
+        <h3 class="bento-title">Right-click, and it is done</h3>
+        <p class="bento-text">
+          Extract here, extract to a new folder, open, or compress to ZIP from the right-click menu of Windows Explorer and
+          Linux file managers (Nautilus, Dolphin, Nemo and Thunar), and drag files into the window.
+        </p>
+        </div>
+        <Shot name="settings-right-click" alt="packwing's Settings, choosing which items its right-click menu holds" />
+      </article>
+
+      {
+        cards.map((card) => (
+          <article class="bento-card">
+            <div class="bento-badge-row">
+              <span class="badge-accent-tag">{card.tag}</span>
+            </div>
+            <h3 class="bento-title">{card.title}</h3>
+            <p class="bento-text">{card.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .card-wide {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .card-wide {
+      grid-template-columns: 2fr 3fr;
+      gap: 2.5rem;
+    }
+    .card-wide:nth-of-type(even) .wide-text {
+      order: 2;
+    }
+  }
+
+  .card-wide .bento-text {
+    margin-bottom: 0;
+  }
+
+  .card-wide :global(.shot) {
+    border-radius: 12px;
+  }
+</style>

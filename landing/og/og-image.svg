@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- The card a shared link to packwing.hivepaas.com shows: og/render.mjs makes
+       public/og-image.png from it, with the app's window laid over the right. -->
+  <defs>
+    <radialGradient id="glow" cx="0.2" cy="0" r="0.9">
+      <stop offset="0" stop-color="#7ad6c0" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#7ad6c0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a5ead9"/>
+      <stop offset="1" stop-color="#7ad6c0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#05090b"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- The logo and the name -->
+  <g transform="translate(64 56) scale(0.38)">
+  
+  <defs>
+    <linearGradient id="logotile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b8462"/>
+      <stop offset="1" stop-color="#185b42"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="224" height="224" rx="54" fill="url(#logotile)"/>
+  <g transform="translate(16 16) scale(2.24) translate(50 50) scale(0.86) translate(-50.5 -52.5)">
+    <g fill="#cdebdd">
+      <rect x="33" y="8" width="17" height="6" rx="2.5"/>
+      <rect x="50" y="15" width="17" height="6" rx="2.5"/>
+      <rect x="33" y="22" width="17" height="6" rx="2.5"/>
+      <rect x="50" y="29" width="17" height="6" rx="2.5"/>
+      <rect x="33" y="36" width="17" height="6" rx="2.5"/>
+    </g>
+    <path d="M35.5 46h29a2.5 2.5 0 0 1 2.4 3.2l-2.9 9A2.5 2.5 0 0 1 61.6 60H38.4a2.5 2.5 0 0 1-2.4-1.8l-2.9-9A2.5 2.5 0 0 1 35.5 46z" fill="#fff"/>
+    <path d="M50 63c16 8 18 23 4 34-12-7-18-22-4-34z" fill="#ffe1cc"/>
+    <path d="M49.7 68q3.2 13 3.4 25" fill="none" stroke="#5a2e0c" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</g>
+  <text x="170" y="114" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="42" font-weight="800" fill="#ffffff">pack<tspan fill="#7ad6c0">wing</tspan></text>
+
+  <text x="80" y="268" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="#ffffff">The file archiver</text>
+  <text x="80" y="342" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">that opens archives</text>
+  <text x="80" y="416" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">safely.</text>
+
+  <text x="80" y="478" font-family="Inter, sans-serif" font-size="25" fill="#94a3b8">ZIP, RAR, 7z, tar, ISO and age. Free and open source.</text>
+
+  <g font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#a5ead9">
+    <rect x="80" y="520" width="146" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
+    <text x="153" y="549" text-anchor="middle">Windows</text>
+    <rect x="240" y="520" width="112" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
+    <text x="296" y="549" text-anchor="middle">Linux</text>
+    <text x="378" y="549" fill="#5b6b82">packwing.hivepaas.com</text>
+  </g>
+</svg>

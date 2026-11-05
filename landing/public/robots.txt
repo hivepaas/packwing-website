@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://packwing.hivepaas.com/sitemap.xml

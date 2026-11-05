@@ -1,0 +1,100 @@
+---
+// Safety.astro - what "opens archives safely" means: what never happens, and
+// the Extract dialog that says so.
+import Shot from './Shot.astro';
+
+const points = [
+  {
+    title: 'Nothing lands outside the folder.',
+    text: 'A name that climbs out (../), an absolute path, or a link that leads elsewhere is refused or left out.',
+  },
+  {
+    title: 'Archive bombs stop.',
+    text: 'What comes out is held to a size limit, however small the archive.',
+  },
+  {
+    title: 'Your files stay yours.',
+    text: 'A file already there is never written over unless you say so.',
+  },
+  {
+    title: 'Programs ask first.',
+    text: 'A file opened from an archive opens as a copy in a temporary folder, after asking; a program always asks.',
+  },
+  {
+    title: 'The Internet mark stays.',
+    text: 'On Windows and macOS, what came from the Internet is still marked when extracted, so the system warns before it runs.',
+  },
+  {
+    title: 'Names this system can use.',
+    text: 'Names your system cannot take are asked about once, all together, before anything is written: skip, rename or stop.',
+  },
+];
+---
+
+<section class="section" id="safety">
+  <div class="container safety">
+    <div class="safety-text">
+      <span class="section-tag">Safe by default</span>
+      <h2 class="safety-title"><span class="text-gradient-white">Extract without a second thought.</span></h2>
+      <p class="safety-desc">
+        An archive from anyone can hold surprises. packwing checks each one as it goes, so a bad archive stops before it
+        does harm, and tells you why.
+      </p>
+      <ul class="check-list">
+        {
+          points.map((p) => (
+            <li>
+              <strong>{p.title}</strong> {p.text}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="safety-shot">
+      <Shot
+        name="extract"
+        alt="packwing's Extract dialog: Smart puts the files in a new folder, and a note says nothing leaves the folder or passes the size limit"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .safety {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 980px) {
+    .safety {
+      grid-template-columns: 5fr 6fr;
+    }
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+
+  .safety-title {
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .safety-desc {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+// Formats.astro - what packwing opens, and what it writes.
+const opens = [
+  { name: 'ZIP', note: 'split archives too; jar, apk, epub, cbz' },
+  { name: 'RAR', note: '1.4 to 7, volumes too' },
+  { name: '7z', note: 'and its parts, .7z.001' },
+  { name: 'tar', note: 'and cpio' },
+  { name: 'Disc images', note: 'ISO 9660 and UDF' },
+  { name: 'Packages', note: 'RPM, and macOS .pkg' },
+  { name: 'Compressed', note: 'gzip, zstd, xz, bzip2, lz4, lzma: any layers around them' },
+  { name: 'age', note: 'passphrase, age, SSH and post-quantum keys' },
+];
+
+const writes = [
+  { name: 'ZIP', note: 'AES-256, in parts' },
+  { name: '7z', note: 'AES-256, names hidden, in parts' },
+  { name: '.tar.gz · .tar.xz · .tar.zst', note: 'five levels' },
+  { name: '.age', note: 'to a passphrase or keys' },
+];
+---
+
+<section class="section" id="formats">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Formats</span>
+      <h2 class="section-title"><span class="text-gradient-white">Opens what you come across.</span></h2>
+      <p class="section-desc">
+        packwing tells a file by what it holds, not by its name, so a ZIP under another name opens as one.
+      </p>
+    </div>
+
+    <div class="formats">
+      <div class="bento-card">
+        <h3 class="bento-title">Opens</h3>
+        <ul class="format-list">
+          {
+            opens.map((f) => (
+              <li>
+                <span class="format-name">{f.name}</span>
+                <span class="format-note">{f.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="bento-card">
+        <h3 class="bento-title">Writes</h3>
+        <ul class="format-list">
+          {
+            writes.map((f) => (
+              <li>
+                <span class="format-name">{f.name}</span>
+                <span class="format-note">{f.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="bento-text formats-foot">
+          And converts between them, an entry at a time, with no folder in between.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .formats {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .formats {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .format-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .format-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .format-list li:last-child {
+    border-bottom: none;
+  }
+
+  .format-name {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .format-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  .formats-foot {
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 1rem;
+  }
+</style>

@@ -1,0 +1,156 @@
+---
+// Hero.astro - what packwing is, the way to get it, and its window with an
+// archive open.
+import Shot from './Shot.astro';
+import { GITHUB_URL } from '../data/site';
+import { VERSION } from '../data/downloads';
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <a href="#get" class="linear-pill pill-glow hero-pill">
+      <span class="pulse"></span>
+      packwing {VERSION} · free and open source
+    </a>
+
+    <h1 class="hero-title">
+      <span class="text-gradient-white">The file archiver that</span>
+      <br />
+      <span class="text-gradient-neon">opens archives safely.</span>
+    </h1>
+
+    <p class="hero-sub">
+      ZIP, RAR, 7z, tar, disc images and age files: look inside, extract what you need, and make your own, with nothing
+      written where it should not be. A native app built in <strong>Rust</strong>,{' '}
+      on <strong>hivepack</strong>.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#get" class="btn btn-primary">
+        Download
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+      <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.401 8.168L12 18.896l-7.335 3.869 1.401-8.168L.132 9.21l8.2-1.192z"></path>
+        </svg>
+        Star on GitHub
+      </a>
+    </div>
+
+    <ul class="hero-meta">
+      <li>Windows</li>
+      <li>Linux</li>
+      <li>macOS soon</li>
+      <li>GPL-3.0</li>
+      <li>15 languages</li>
+    </ul>
+
+    <div class="hero-window">
+      <Shot
+        name="archive"
+        eager
+        alt="packwing's window with a 7z archive open: its folders and files, Extract, Add files and Test, and a note that one program in it keeps its Internet mark"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding-top: calc(var(--header-height) + 4.5rem);
+    padding-bottom: 3rem;
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-pill {
+    text-decoration: none;
+    margin-bottom: 1.75rem;
+  }
+
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent-glow);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 8px rgba(122, 214, 192, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(122, 214, 192, 0);
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    max-width: 680px;
+    font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-sub strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-meta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.4rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-meta li + li::before {
+    content: '·';
+    margin-right: 1.4rem;
+    margin-left: -0.6rem;
+    color: var(--text-muted);
+  }
+
+  .hero-window {
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse {
+      animation: none;
+    }
+  }
+</style>

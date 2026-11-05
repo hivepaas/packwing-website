@@ -1,0 +1,137 @@
+---
+// CommandLine.astro - pkw: packwing without the window.
+const lines: [string, string][] = [
+  ['pkw list backup.7z', 'what it holds; --json for scripts'],
+  ['pkw extract backup.7z', 'into backup/, as safely as the app'],
+  ['pkw test backup.7z', 'it reads whole, as it was made'],
+  ['pkw create site.tar.zst site/', 'its format by its extension'],
+  ['pkw create -p --hide-names private.7z docs/', 'a password, asked; names hidden'],
+  ['pkw convert photos.rar photos.tar.zst', 'another format, with no folder between'],
+  ['pkw checksum --check SHA256SUMS', 'downloads, checked against their list'],
+  ['pkw sign release.zip --by ~/.ssh/id_ed25519', 'release.zip.sig beside it'],
+  ['pkw cp site.tar.zst Backups:2026/', 'to a storage added in the app'],
+];
+
+const exits = [
+  ['0', 'done'],
+  ['1', 'failed'],
+  ['2', 'not understood'],
+  ['3', 'password or key needed, or wrong'],
+  ['4', 'not an archive it opens'],
+  ['5', 'done, with some files skipped or damaged'],
+];
+---
+
+<section class="section" id="cli">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Command line</span>
+      <h2 class="section-title"><span class="text-gradient-white">packwing, without the window.</span></h2>
+      <p class="section-desc">
+        <code>pkw</code> is for a terminal, a server over SSH or a script: the same formats, the same safety and the same
+        organization policies as the app.
+      </p>
+    </div>
+
+    <div class="cli">
+      <div class="term term-window" role="img" aria-label="pkw commands in a terminal">
+        <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="term-body">
+          {
+            lines.map(([cmd, note]) => (
+              <div class="entry">
+                <div>
+                  <span class="acc">$</span> {cmd}
+                </div>
+                <div class="c8"># {note}</div>
+              </div>
+            ))
+          }
+          <div><span class="acc">$</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+
+      <div class="cli-side">
+        <div class="bento-card">
+          <h3 class="bento-title">Passwords stay off the command line</h3>
+          <p class="bento-text">
+            pkw asks for one in a terminal, or reads it from a file, standard input or an environment variable, where
+            others cannot see it.
+          </p>
+        </div>
+        <div class="bento-card">
+          <h3 class="bento-title">Exit codes that say what happened</h3>
+          <ul class="exits">
+            {
+              exits.map(([code, text]) => (
+                <li>
+                  <code>{code}</code> {text}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cli {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 980px) {
+    .cli {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .term-window {
+    border-radius: 18px;
+    border: 1px solid var(--border-card);
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .term-bar {
+    display: flex;
+    gap: 0.45rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .term-bar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .term-body {
+    padding: 1.25rem;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    white-space: pre;
+  }
+
+  .entry {
+    margin-bottom: 0.35rem;
+  }
+
+  .cli-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .exits {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+// Storages.astro - folders, S3, WebDAV and SFTP, browsed as a file manager does,
+// and archives read where they are.
+const kinds = [
+  { name: 'Folders', note: 'on this computer, and the drives it sees' },
+  { name: 'S3', note: 'Amazon S3, and S3-compatible storage' },
+  { name: 'WebDAV', note: 'any WebDAV server' },
+  { name: 'SFTP', note: 'any server you reach over SSH' },
+];
+---
+
+<section class="section" id="storages">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Storages</span>
+      <h2 class="section-title"><span class="text-gradient-white">Your archives, wherever they are.</span></h2>
+      <p class="section-desc">
+        Browse folders, buckets and servers as a file manager does, and copy and move between them. Secrets stay in the
+        system’s keychain.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      {
+        kinds.map((k) => (
+          <article class="bento-card kind">
+            <h3 class="bento-title">{k.name}</h3>
+            <p class="bento-text">{k.note}</p>
+          </article>
+        ))
+      }
+      <article class="bento-card bento-span-2">
+        <div class="bento-badge-row"><span class="badge-accent-tag">Archives in place</span></div>
+        <h3 class="bento-title">Read a remote archive without downloading it</h3>
+        <p class="bento-text">
+          A ZIP or 7z archive on a storage is listed, and a file taken from it, without fetching the rest.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kind .bento-text {
+    margin-bottom: 0;
+  }
+</style>

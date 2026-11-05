@@ -1,0 +1,93 @@
+---
+// Organizations.astro - what an organization can set, and how.
+import { POLICIES_DOC_URL } from '../data/site';
+
+const ways = [
+  { name: 'Windows', how: 'Group Policy' },
+  { name: 'macOS', how: 'a configuration profile' },
+  { name: 'Linux', how: 'a file in /etc' },
+];
+---
+
+<section class="section" id="organizations">
+  <div class="container">
+    <div class="org bento-card">
+      <div>
+        <span class="section-tag">For organizations</span>
+        <h2 class="org-title">Set it once, for everyone.</h2>
+        <p class="bento-text">
+          Keep the Internet mark on what is extracted, require encryption on every new archive, and set which passwords
+          are allowed and how long they have to be. What the organization fixes shows as locked in the app, and pkw
+          follows it too.
+        </p>
+        <a href={POLICIES_DOC_URL} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">The policies</a>
+      </div>
+      <ul class="ways">
+        {
+          ways.map((w) => (
+            <li>
+              <span class="way-name">{w.name}</span>
+              <span class="way-how">{w.how}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .org {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .org {
+      grid-template-columns: 3fr 2fr;
+      padding: 3rem;
+    }
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+
+  .org-title {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .ways {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .ways li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .way-name {
+    font-weight: 700;
+  }
+
+  .way-how {
+    color: var(--text-secondary);
+  }
+</style>
