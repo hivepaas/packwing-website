@@ -2,6 +2,7 @@
 // index.astro - packwing's landing page
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import Cores from '../components/Cores.astro';
 import Features from '../components/Features.astro';
 import Safety from '../components/Safety.astro';
 import Formats from '../components/Formats.astro';
@@ -13,9 +14,9 @@ import GetStarted from '../components/GetStarted.astro';
 import { faq } from '../data/faq';
 import { SITE_URL, GITHUB_URL } from '../data/site';
 
-const pageTitle = 'packwing — the file archiver that opens archives safely';
+const pageTitle = 'packwing — the file archiver that uses every core you have';
 const pageDescription =
-  'A free, open source file archiver for macOS, Windows and Linux, built in Rust. Opens ZIP, RAR, 7z, tar, ISO and age files safely, writes ZIP, 7z and tar with AES-256, and browses S3, WebDAV and SFTP. With pkw for the command line.';
+  'A free, open source file archiver for macOS, Windows and Linux, built in Rust, that compresses and extracts on every core of your computer. Opens ZIP, RAR, 7z, tar, ISO and age files safely, writes ZIP, 7z and tar with AES-256, and browses S3, WebDAV and SFTP. With pkw for the command line.';
 const siteUrl = `${SITE_URL}/`;
 const ogImage = new URL('/og-image.png', siteUrl).href;
 const structuredData = {
@@ -46,10 +47,11 @@ const faqData = {
   title={pageTitle}
   description={pageDescription}
   path="/"
-  keywords="file archiver, unzip, unrar, 7z, zip, tar, zstd, age encryption, archive extractor, 7-Zip alternative, WinRAR alternative, open source, Rust, packwing"
+  keywords="file archiver, multi-core compression, parallel compression, unzip, unrar, 7z, zip, tar, zstd, age encryption, archive extractor, 7-Zip alternative, WinRAR alternative, open source, Rust, packwing"
   jsonLd={[structuredData, faqData]}
 >
   <Hero />
+  <Cores />
   <Features />
   <Safety />
   <Formats />

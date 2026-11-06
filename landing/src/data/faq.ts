@@ -13,6 +13,11 @@ export const faq: FaqItem[] = [
       'packwing is free software under the GPL-3.0: the source is on GitHub, and you can build it, change it and share it.',
   },
   {
+    question: 'Does packwing use all of my cores?',
+    answer:
+      "Yes. ZIP, 7z, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once, what is written in pieces (by packwing, xz -T, pbzip2 or 7-Zip) is read on every core, and a ZIP archive's files are extracted several at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than half of the memory free, and Settings › General, or pkw --threads N, sets how many.",
+  },
+  {
     question: 'What does "opens archives safely" mean?',
     answer:
       'Nothing is written outside the folder you extract to, or through a link in the archive. An archive bomb stops at a size limit. A file that is already there is never written over unless you say so. A file opened from an archive opens as a copy in a temporary folder, after asking, and a program always asks first. On Windows and macOS, what came from the Internet keeps its mark when extracted, so the system still warns before running it.',

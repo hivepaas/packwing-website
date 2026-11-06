@@ -41,10 +41,10 @@
   <text x="170" y="114" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="42" font-weight="800" fill="#ffffff">pack<tspan fill="#7ad6c0">wing</tspan></text>
 
   <text x="80" y="268" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="#ffffff">The file archiver</text>
-  <text x="80" y="342" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">that opens archives</text>
-  <text x="80" y="416" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">safely.</text>
+  <text x="80" y="342" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">that uses every</text>
+  <text x="80" y="416" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#title)">core you have.</text>
 
-  <text x="80" y="478" font-family="Inter, sans-serif" font-size="25" fill="#94a3b8">ZIP, RAR, 7z, tar, ISO and age. Free and open source.</text>
+  <text x="80" y="478" font-family="Inter, sans-serif" font-size="25" fill="#94a3b8">ZIP, 7z and tar on every core, opened safely. Free and open source.</text>
 
   <g font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#a5ead9">
     <rect x="80" y="520" width="128" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
