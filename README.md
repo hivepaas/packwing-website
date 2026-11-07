@@ -6,14 +6,14 @@ The website of [packwing](https://github.com/hivepaas/packwing), at
 
 ```sh
 yarn install
-yarn dev            # http://localhost:3200
+yarn dev            # http://localhost:3201
 yarn build          # landing/dist
 yarn lint
 ```
 
-- **Screenshots.** The pictures in `landing/public/shots/` are the app's own, dark,
+- **Screenshots.** The pictures in `landing/public/shots/` are the app's own, light,
   as packwing draws them with `cargo test -p packwing --features shots shots`
-  (`target/shots/*-dark.png`), resized to 1600×1000 and saved as WebP. Only ones
+  (`target/shots/*-light.png`), resized to 1600×1000 and saved as WebP. Only ones
   that show no path of the machine they were made on.
 - **Images.** `cd landing && node og/render.mjs` renders `og/og-image.svg`, with the
   hero's screenshot, to `public/og-image.png`, and the logo to the favicons.

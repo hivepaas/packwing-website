@@ -1,0 +1,217 @@
+---
+// Cores.astro - packwing works on every core the computer has: what is made
+// and read in threads, the same archive whatever their number, and within the
+// memory there is. Beside it, a picture of the cores at work.
+
+const points = [
+  {
+    title: 'Made on every core.',
+    text: 'ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on all of your cores at once: ZIP a file on each, gzip as pigz does it, the others a piece on each.',
+  },
+  {
+    title: 'Opened on every core.',
+    text: 'What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read a piece on each core, and so is any bzip2 file and a macOS package. ZIP and RAR archives’ files, and 7z’s solid blocks, come out several at once, and a tar archive’s files are written while it is still being read.',
+  },
+  {
+    title: 'A .tar.zst that opens on every core.',
+    text: 'From 256 MiB, a .tar.zst goes in frames of 32 MiB with zstd’s seek table, so every core opens it at once, for a fraction of a percent in size. One frame, the smallest, is a click away.',
+  },
+  {
+    title: 'The same archive, byte for byte.',
+    text: 'One core or thirty-two, what is made is identical: the cores change only how soon it is done.',
+  },
+  {
+    title: 'Never out of memory.',
+    text: 'The threads take no more than half of the memory free, within a container’s limits too, whether they make an archive or open one: a RAR or 7z archive gets as many as its dictionaries leave room for. Where one level would take more, it is lowered, and you are told.',
+  },
+  {
+    title: 'As many as you like.',
+    text: 'All of them by default; Settings › General, or pkw --threads N, sets fewer.',
+  },
+];
+
+// Each core's load in the picture, and how far into the beat it starts.
+const cores = Array.from({ length: 16 }, (_, i) => ({
+  load: [92, 78, 88, 96, 84, 90, 74, 94, 86, 98, 80, 91, 77, 89, 95, 83][i],
+  delay: ((i * 7) % 16) * 0.11,
+}));
+---
+
+<section class="section" id="cores">
+  <div class="container cores">
+    <div class="cores-text">
+      <span class="section-tag">Every core</span>
+      <h2 class="cores-title"><span class="text-gradient-white">Built for speed, on every core.</span></h2>
+      <p class="cores-desc">
+        A big archive is a lot of work for one core while the others wait. packwing shares it among all of them, so it
+        is made, and opened, many times sooner.
+      </p>
+      <ul class="check-list">
+        {
+          points.map((p) => (
+            <li>
+              <strong>{p.title}</strong> {p.text}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <figure class="cores-panel" aria-label="Sixteen cores, each busy compressing part of one archive">
+      <div class="panel-head">
+        <span class="panel-file">Project files 2026.tar.zst</span>
+        <span class="panel-state">16 threads</span>
+      </div>
+      <div class="core-grid" aria-hidden="true">
+        {
+          cores.map((core, i) => (
+            <div class="core">
+              <div class="core-bar">
+                <span style={`--load: ${core.load}%; --delay: ${core.delay}s`} />
+              </div>
+              <span class="core-name">{i + 1}</span>
+            </div>
+          ))
+        }
+      </div>
+      <figcaption class="panel-foot">
+        <span>Same archive, byte for byte</span>
+        <span>Within half the memory free</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .cores {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 980px) {
+    .cores {
+      grid-template-columns: 6fr 5fr;
+    }
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+
+  .cores-title {
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .cores-desc {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+  }
+
+  .cores-panel {
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    box-shadow: 0 0 60px -20px var(--accent-glow);
+  }
+
+  .panel-head,
+  .panel-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .panel-head {
+    margin-bottom: 1.25rem;
+  }
+
+  .panel-file {
+    color: var(--text-primary);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .panel-state {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .core-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.6rem 0.5rem;
+  }
+
+  .core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .core-bar {
+    position: relative;
+    width: 100%;
+    height: 84px;
+    border-radius: 6px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
+
+  .core-bar span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--load);
+    background: linear-gradient(to top, var(--accent-strong), var(--accent));
+    transform-origin: bottom;
+    animation: busy 1.8s ease-in-out var(--delay) infinite alternate;
+  }
+
+  @keyframes busy {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0.82);
+    }
+  }
+
+  .core-name {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-foot {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .core-bar span {
+      animation: none;
+    }
+  }
+</style>

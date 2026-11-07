@@ -5,13 +5,13 @@
     "landing"
   ],
   "scripts": {
-    "dev:landing": "yarn workspace landing dev --port 3200",
+    "dev:landing": "yarn workspace landing dev --port 3201",
     "dev": "yarn dev:landing",
     "build:landing": "yarn workspace landing build",
     "build": "yarn build:landing",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro && prettier --check .",
     "format": "prettier --write .",
-    "serve:landing": "yarn workspace landing preview --port 3200 --host 0.0.0.0",
+    "serve:landing": "yarn workspace landing preview --port 3201 --host 0.0.0.0",
     "serve": "yarn serve:landing"
   },
   "devDependencies": {

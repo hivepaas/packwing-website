@@ -67,7 +67,9 @@ const cards = [
         <h3 class="bento-title">ZIP, 7z and tar, your way</h3>
         <p class="bento-text">
           ZIP, 7z, <code>.tar.gz</code>, <code>.tar.xz</code> and <code>.tar.zst</code>, with five levels, AES-256 on ZIP
-          and 7z (7z can hide the names too), and parts as 7-Zip cuts them. It tells you who can open what you make.
+          and 7z (7z can hide the names too), and parts as 7-Zip cuts them. For a backup, a tar archive keeps each file’s
+          owner, group and extended attributes, ACLs among them, and gives them back when you extract it; an archive to
+          share leaves them out. It tells you who can open what you make.
         </p>
         </div>
         <Shot name="create-7z" alt="packwing's New archive dialog, making a 7z archive, with a note on which systems open it" />
