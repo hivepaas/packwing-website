@@ -15,7 +15,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Does packwing use all of my cores?',
     answer:
-      "Yes. ZIP, 7z, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once, what is written in pieces (by packwing, xz -T, pbzip2 or 7-Zip) is read on every core, and a ZIP archive's files are extracted several at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than half of the memory free, and Settings › General, or pkw --threads N, sets how many.",
+      "Yes. ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once. What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read on every core, as is any bzip2 file and a macOS package; ZIP and RAR archives' files and 7z's solid blocks are extracted several at once, and a tar archive's files are written while it is read. A .tar.zst of 256 MiB or more is made in frames that every core opens at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than half of the memory free, and Settings › General, or pkw --threads N, sets how many.",
   },
   {
     question: 'What does "opens archives safely" mean?',
@@ -26,6 +26,11 @@ export const faq: FaqItem[] = [
     question: 'Which formats does it open and write?',
     answer:
       'It opens ZIP (split archives too), RAR 1.4 to 7 (volumes too), 7z, tar, cpio, ISO 9660 and UDF disc images, RPM packages and macOS packages, inside gzip, zstd, xz, bzip2 and other layers, and .age files. It writes ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .age, with AES-256 on ZIP and 7z, and parts as 7-Zip cuts them.',
+  },
+  {
+    question: 'Can I make backups with it?',
+    answer:
+      "Yes. When you ask, a tar archive keeps each file's owner and group and its extended attributes (Linux's ACLs among them), and holds a file with several names once. Extracting gives them back when Settings › Extracting, or pkw extract --same-owner --xattrs, says so; only an administrator gives files to other users. An archive to share leaves them out, so it does not name its users. pkw create --mtime, or SOURCE_DATE_EPOCH, gives the same files the same archive.",
   },
   {
     question: 'Can I use it without the window?',

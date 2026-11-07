@@ -6,6 +6,8 @@ const lines: [string, string][] = [
   ['pkw test backup.7z', 'it reads whole, as it was made'],
   ['pkw create site.tar.zst site/', 'its format by its extension'],
   ['pkw create -p --hide-names private.7z docs/', 'a password, asked; names hidden'],
+  ['pkw create --owners --xattrs home.tar.zst ~/', 'a backup: owners, attributes and ACLs kept'],
+  ['pkw extract --same-owner --xattrs home.tar.zst', 'and given back as they were'],
   ['pkw convert photos.rar photos.tar.zst', 'another format, with no folder between'],
   ['pkw checksum --check SHA256SUMS', 'downloads, checked against their list'],
   ['pkw sign release.zip --by ~/.ssh/id_ed25519', 'release.zip.sig beside it'],

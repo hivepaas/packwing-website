@@ -6,11 +6,15 @@
 const points = [
   {
     title: 'Made on every core.',
-    text: 'ZIP, 7z, .tar.xz, .tar.zst and .tar.bz2 are compressed on all of your cores at once: ZIP a file on each, the others a piece on each.',
+    text: 'ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on all of your cores at once: ZIP a file on each, gzip as pigz does it, the others a piece on each.',
   },
   {
     title: 'Opened on every core.',
-    text: 'What is written in pieces (by packwing, xz -T, pbzip2 or 7-Zip) is read a piece on each core, and a ZIP archive’s files come out several at once.',
+    text: 'What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read a piece on each core, and so is any bzip2 file and a macOS package. ZIP and RAR archives’ files, and 7z’s solid blocks, come out several at once, and a tar archive’s files are written while it is still being read.',
+  },
+  {
+    title: 'A .tar.zst that opens on every core.',
+    text: 'From 256 MiB, a .tar.zst goes in frames of 32 MiB with zstd’s seek table, so every core opens it at once, for a fraction of a percent in size. One frame, the smallest, is a click away.',
   },
   {
     title: 'The same archive, byte for byte.',
@@ -18,7 +22,7 @@ const points = [
   },
   {
     title: 'Never out of memory.',
-    text: 'The threads take no more than half of the memory free, within a container’s limits too. Where one level would take more, it is lowered, and you are told.',
+    text: 'The threads take no more than half of the memory free, within a container’s limits too, whether they make an archive or open one: a RAR or 7z archive gets as many as its dictionaries leave room for. Where one level would take more, it is lowered, and you are told.',
   },
   {
     title: 'As many as you like.',
