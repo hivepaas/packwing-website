@@ -22,7 +22,7 @@ const points = [
   },
   {
     title: 'Never out of memory.',
-    text: 'The threads take no more than half of the memory free, within a container’s limits too, whether they make an archive or open one: a RAR or 7z archive gets as many as its dictionaries leave room for. Where one level would take more, it is lowered, and you are told.',
+    text: 'The threads take no more than 70% of the memory free, and leave at least 2 GB of it to everything else (half, where little is free), within a container’s limits too, whether they make an archive or open one: a RAR or 7z archive gets as many as its dictionaries leave room for. Where one level would take more, it is lowered, and you are told.',
   },
   {
     title: 'As many as you like.',
@@ -76,7 +76,7 @@ const cores = Array.from({ length: 16 }, (_, i) => ({
       </div>
       <figcaption class="panel-foot">
         <span>Same archive, byte for byte</span>
-        <span>Within half the memory free</span>
+        <span>Within 70% of the memory free</span>
       </figcaption>
     </figure>
   </div>

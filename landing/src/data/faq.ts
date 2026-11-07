@@ -15,7 +15,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Does packwing use all of my cores?',
     answer:
-      "Yes. ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once. What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read on every core, as is any bzip2 file and a macOS package; ZIP and RAR archives' files and 7z's solid blocks are extracted several at once, and a tar archive's files are written while it is read. A .tar.zst of 256 MiB or more is made in frames that every core opens at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than half of the memory free, and Settings › General, or pkw --threads N, sets how many.",
+      "Yes. ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once. What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read on every core, as is any bzip2 file and a macOS package; ZIP and RAR archives' files and 7z's solid blocks are extracted several at once, and a tar archive's files are written while it is read. A .tar.zst of 256 MiB or more is made in frames that every core opens at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than 70% of the memory free, and leave at least 2 GB of it to everything else, and Settings › General, or pkw --threads N, sets how many.",
   },
   {
     question: 'What does "opens archives safely" mean?',
