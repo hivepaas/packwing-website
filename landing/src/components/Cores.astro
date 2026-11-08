@@ -58,28 +58,28 @@ const cores = Array.from({ length: 16 }, (_, i) => ({
     </div>
 
     <div class="cores-side">
-    <figure class="cores-panel" aria-label="Sixteen cores, each busy compressing part of one archive">
-      <div class="panel-head">
-        <span class="panel-file">Project files 2026.tar.zst</span>
-        <span class="panel-state">16 threads</span>
-      </div>
-      <div class="core-grid" aria-hidden="true">
-        {
-          cores.map((core, i) => (
-            <div class="core">
-              <div class="core-bar">
-                <span style={`--load: ${core.load}%; --delay: ${core.delay}s`} />
+      <figure class="cores-panel" aria-label="Sixteen cores, each busy compressing part of one archive">
+        <div class="panel-head">
+          <span class="panel-file">Project files 2026.tar.zst</span>
+          <span class="panel-state">16 threads</span>
+        </div>
+        <div class="core-grid" aria-hidden="true">
+          {
+            cores.map((core, i) => (
+              <div class="core">
+                <div class="core-bar">
+                  <span style={`--load: ${core.load}%; --delay: ${core.delay}s`} />
+                </div>
+                <span class="core-name">{i + 1}</span>
               </div>
-              <span class="core-name">{i + 1}</span>
-            </div>
-          ))
-        }
-      </div>
-      <figcaption class="panel-foot">
-        <span>Same archive, byte for byte</span>
-        <span>Within 70% of the memory free</span>
-      </figcaption>
-    </figure>
+            ))
+          }
+        </div>
+        <figcaption class="panel-foot">
+          <span>Same archive, byte for byte</span>
+          <span>Within 70% of the memory free</span>
+        </figcaption>
+      </figure>
       <p class="cores-note">
         How fast a job goes depends on more than cores: the format and level, the memory free, and how quickly your
         disk reads and writes.
