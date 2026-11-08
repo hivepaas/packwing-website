@@ -57,6 +57,7 @@ const cores = Array.from({ length: 16 }, (_, i) => ({
       </ul>
     </div>
 
+    <div class="cores-side">
     <figure class="cores-panel" aria-label="Sixteen cores, each busy compressing part of one archive">
       <div class="panel-head">
         <span class="panel-file">Project files 2026.tar.zst</span>
@@ -79,6 +80,11 @@ const cores = Array.from({ length: 16 }, (_, i) => ({
         <span>Within 70% of the memory free</span>
       </figcaption>
     </figure>
+      <p class="cores-note">
+        How fast a job goes depends on more than cores: the format and level, the memory free, and how quickly your
+        disk reads and writes.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -118,6 +124,18 @@ const cores = Array.from({ length: 16 }, (_, i) => ({
     line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 1.75rem;
+  }
+
+  .cores-side {
+    min-width: 0;
+  }
+
+  .cores-note {
+    margin-top: 0.9rem;
+    padding: 0 0.25rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-muted);
   }
 
   .cores-panel {
