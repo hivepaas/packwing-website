@@ -86,7 +86,7 @@ export const systems: Os[] = [
       },
     ],
     steps: [
-      'Run the installer.',
+      'Run the installer: for everyone, into Program Files (Windows asks for an administrator), or for you alone.',
       'Start packwing from the Start menu, or right-click a file in Explorer.',
       'pkw, the command line, is in your PATH: open a new terminal to use it.',
       'Updates install themselves when you say so.',

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <!-- The card a shared link to packwing.hivepaas.com shows: og/render.mjs makes
+  <!-- The card a shared link to packwing.app shows: og/render.mjs makes
        public/og-image.png from it, with the app's window laid over the right. -->
   <defs>
     <radialGradient id="glow" cx="0.2" cy="0" r="0.9">
@@ -53,6 +53,6 @@
     <text x="295" y="549" text-anchor="middle">Windows</text>
     <rect x="382" y="520" width="112" height="44" rx="22" fill="#7ad6c0" fill-opacity="0.1" stroke="#7ad6c0" stroke-opacity="0.4"/>
     <text x="438" y="549" text-anchor="middle">Linux</text>
-    <text x="520" y="549" fill="#5b6b82">packwing.hivepaas.com</text>
+    <text x="520" y="549" fill="#5b6b82">packwing.app</text>
   </g>
 </svg>

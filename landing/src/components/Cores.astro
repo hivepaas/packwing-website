@@ -6,15 +6,19 @@
 const points = [
   {
     title: 'Made on every core.',
-    text: 'ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on all of your cores at once: ZIP a file on each, gzip as pigz does it, the others a piece on each.',
+    text: 'ZIP, 7z, .tar.gz, .tar.xz, .tar.zst, .tar.bz2 and .tar.lz4 are compressed on all of your cores at once: ZIP a file on each, and one large file on all of them, as pigz does gzip; the others a piece on each. Files added to a ZIP archive are compressed on every core too.',
   },
   {
     title: 'Opened on every core.',
-    text: 'What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read a piece on each core, and so is any bzip2 file and a macOS package. ZIP and RAR archives’ files, and 7z’s solid blocks, come out several at once, and a tar archive’s files are written while it is still being read.',
+    text: 'What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read a piece on each core, and so is any bzip2 file and a macOS package. ZIP and RAR archives’ files, and 7z’s solid blocks, come out several at once, a solid RAR archive’s large files are decoded on several cores, and a tar or cpio archive’s files are written while it is still being read, and decompressed only once.',
   },
   {
     title: 'A .tar.zst that opens on every core.',
     text: 'From 256 MiB, a .tar.zst goes in frames of 32 MiB with zstd’s seek table, so every core opens it at once, for a fraction of a percent in size. One frame, the smallest, is a click away.',
+  },
+  {
+    title: 'Smaller blocks, when you ask.',
+    text: 'A .tar.xz or a 7z archive goes in its format’s own blocks, the smallest archive, which are fewer than your cores below a few GB. New archive, or pkw --blocks small, cuts enough for 32 cores: up to twice as fast, a few percent larger.',
   },
   {
     title: 'The same archive, byte for byte.',

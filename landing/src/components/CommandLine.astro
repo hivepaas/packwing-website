@@ -12,6 +12,7 @@ const lines: [string, string][] = [
   ['pkw checksum --check SHA256SUMS', 'downloads, checked against their list'],
   ['pkw sign release.zip --by ~/.ssh/id_ed25519', 'release.zip.sig beside it'],
   ['pkw cp site.tar.zst Backups:2026/', 'to a storage added in the app'],
+  ['pkw audit verify', 'the audit log: nothing changed or taken out'],
 ];
 
 const exits = [
@@ -21,6 +22,7 @@ const exits = [
   ['3', 'password or key needed, or wrong'],
   ['4', 'not an archive it opens'],
   ['5', 'done, with some files skipped or damaged'],
+  ['130', 'stopped by Ctrl-C, what it was making removed'],
 ];
 ---
 

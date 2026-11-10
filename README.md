@@ -1,7 +1,7 @@
 # packwing-website
 
 The website of [packwing](https://github.com/hivepaas/packwing), at
-[packwing.hivepaas.com](https://packwing.hivepaas.com): a landing page built with
+[packwing.app](https://packwing.app): a landing page built with
 [Astro](https://astro.build), in `landing/`.
 
 ```sh

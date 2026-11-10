@@ -15,7 +15,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Does packwing use all of my cores?',
     answer:
-      "Yes. ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .tar.bz2 are compressed on every core at once. What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read on every core, as is any bzip2 file and a macOS package; ZIP and RAR archives' files and 7z's solid blocks are extracted several at once, and a tar archive's files are written while it is read. A .tar.zst of 256 MiB or more is made in frames that every core opens at once. The archive is the same, byte for byte, however many cores made it. The threads take no more than 70% of the memory free, and leave at least 2 GB of it to everything else, and Settings › General, or pkw --threads N, sets how many.",
+      "Yes. ZIP, 7z, .tar.gz, .tar.xz, .tar.zst, .tar.bz2 and .tar.lz4 are compressed on every core at once, and so is one large file in a ZIP archive. What is written in pieces (by packwing, xz -T, pzstd, pbzip2 or 7-Zip) is read on every core, as is any bzip2 file and a macOS package; ZIP and RAR archives' files and 7z's solid blocks are extracted several at once, and a tar archive's files are written while it is read. A .tar.zst of 256 MiB or more is made in frames that every core opens at once, and a .tar.xz or 7z archive in smaller blocks when you ask. The archive is the same, byte for byte, however many cores made it. The threads take no more than 70% of the memory free, and leave at least 2 GB of it to everything else, and Settings › General, or pkw --threads N, sets how many.",
   },
   {
     question: 'What does "opens archives safely" mean?',
@@ -25,7 +25,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Which formats does it open and write?',
     answer:
-      'It opens ZIP (split archives too), RAR 1.4 to 7 (volumes too), 7z, tar, cpio, ISO 9660 and UDF disc images, RPM packages and macOS packages, inside gzip, zstd, xz, bzip2 and other layers, and .age files. It writes ZIP, 7z, .tar.gz, .tar.xz, .tar.zst and .age, with AES-256 on ZIP and 7z, and parts as 7-Zip cuts them.',
+      'It opens ZIP (split archives too), RAR 1.4 to 7 (volumes too), 7z, tar, cpio, ISO 9660 and UDF disc images, RPM packages and macOS packages, inside gzip, zstd, xz, bzip2 and other layers, and .age files. It writes ZIP, 7z, .tar.gz, .tar.xz, .tar.zst, .tar.bz2, .tar.lz4 and .age, with AES-256 on ZIP and 7z, and parts as 7-Zip cuts them, and adds, deletes and renames inside ZIP and 7z archives.',
   },
   {
     question: 'Can I make backups with it?',
@@ -45,12 +45,12 @@ export const faq: FaqItem[] = [
   {
     question: 'Can my organization set it up?',
     answer:
-      'Yes. Group Policy on Windows, a configuration profile on macOS, or a file in /etc on Linux can keep the Internet mark, require encryption, and set which kinds of passwords are allowed and how long they have to be. The settings they fix show as locked.',
+      'Yes. Group Policy on Windows, a configuration profile on macOS, or a file in /etc on Linux can keep the Internet mark, require encryption, set which kinds of passwords are allowed and how long they have to be, and keep an audit log of what packwing does, on the computer and in the system’s own log. The settings they fix show as locked.',
   },
   {
     question: 'How do I install it, and how does it update?',
     answer:
-      'Download it for your system above: a .dmg for macOS, an installer for Windows, an AppImage, a .deb or an .rpm for Linux. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app, the Windows installer and the AppImage update themselves when you say so; for a .deb or an .rpm, the app shows the commands. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
+      'Download it for your system above: a .dmg for macOS, an installer for Windows (for everyone, or for you alone), an AppImage, a .deb or an .rpm for Linux. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app, the Windows installer and the AppImage update themselves when you say so; for a .deb or an .rpm, the app shows the commands. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
   },
   {
     question: 'Is there a mobile app?',
