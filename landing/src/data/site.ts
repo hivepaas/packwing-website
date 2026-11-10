@@ -1,6 +1,6 @@
 // Addresses the landing site links to from more than one page.
 
-export const SITE_URL = 'https://packwing.hivepaas.com';
+export const SITE_URL = 'https://packwing.app';
 export const GITHUB_URL = 'https://github.com/hivepaas/packwing';
 export const HIVEPACK_URL = 'https://github.com/hivepaas/hivepack-rs';
 export const HIVEPAAS_URL = 'https://hivepaas.com';

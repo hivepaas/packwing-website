@@ -1,5 +1,5 @@
 // Renders og-image.svg to public/og-image.png, the image a shared link to
-// packwing.hivepaas.com shows, with the app's window at its right; and
+// packwing.app shows, with the app's window at its right; and
 // the logo to the favicons and the touch icon.
 // Run from landing/: node og/render.mjs
 import { writeFileSync } from 'node:fs';
