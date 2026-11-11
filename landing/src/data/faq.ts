@@ -25,7 +25,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Which formats does it open and write?',
     answer:
-      'It opens ZIP (split archives too), RAR 1.4 to 7 (volumes too), 7z, tar, cpio, ISO 9660 and UDF disc images, RPM packages and macOS packages, inside gzip, zstd, xz, bzip2 and other layers, and .age files. It writes ZIP, 7z, .tar.gz, .tar.xz, .tar.zst, .tar.bz2, .tar.lz4 and .age, with AES-256 on ZIP and 7z, and parts as 7-Zip cuts them, and adds, deletes and renames inside ZIP and 7z archives.',
+      'It opens ZIP (split archives too), RAR 1.4 to 7 (volumes too), 7z, tar, cpio, ISO 9660 and UDF disc images, Debian and RPM packages, snaps, AppImages and macOS packages, inside gzip, zstd, xz, bzip2 and other layers, and .age files. It writes ZIP, 7z, .tar.gz, .tar.xz, .tar.zst, .tar.bz2, .tar.lz4 and .age, with AES-256 on ZIP and 7z, and parts as 7-Zip cuts them, and adds, deletes and renames inside ZIP and 7z archives.',
   },
   {
     question: 'Can I make backups with it?',
