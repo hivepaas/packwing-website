@@ -6,6 +6,11 @@ export const HIVEPACK_URL = 'https://github.com/hivepaas/hivepack-rs';
 export const HIVEPAAS_URL = 'https://hivepaas.com';
 export const SHELLWING_URL = 'https://shellwing.app';
 export const TRACEWING_URL = 'https://tracewing.app';
+// Whether /pricing is offered: in the navbar, the footer and the sitemap, and to
+// search engines. Hidden for now, until the portal sells licenses; the page is
+// still built, as the app's Settings › License opens it for Buy and Renew.
+export const SHOW_PRICING = false;
+
 // Where a license is bought, renewed and tried: HivePaaS's portal, with Paddle
 // as the merchant of record.
 export const PORTAL_PRICING_URL =

@@ -1,6 +1,6 @@
 ---
 // Footer.astro - the sections again, the project's links, the license
-import { GITHUB_URL, BUILD_DOC_URL, POLICIES_DOC_URL, UPDATES_DOC_URL, LICENSE_URL, CONTRIBUTING_URL, HIVEPACK_URL, HIVEPAAS_URL, SHELLWING_URL, TRACEWING_URL } from '../data/site';
+import { SHOW_PRICING, GITHUB_URL, BUILD_DOC_URL, POLICIES_DOC_URL, UPDATES_DOC_URL, LICENSE_URL, CONTRIBUTING_URL, HIVEPACK_URL, HIVEPAAS_URL, SHELLWING_URL, TRACEWING_URL } from '../data/site';
 
 const columns = [
   {
@@ -11,7 +11,7 @@ const columns = [
       { href: '/#formats', label: 'Formats' },
       { href: '/#storages', label: 'Storages' },
       { href: '/#cli', label: 'Command line' },
-      { href: '/pricing', label: 'Pricing' },
+      ...(SHOW_PRICING ? [{ href: '/pricing', label: 'Pricing' }] : []),
     ],
   },
   {

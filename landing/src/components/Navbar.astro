@@ -2,7 +2,7 @@
 // Navbar.astro - the brand, the home page's sections, GitHub
 // Links to the home page's sections are absolute (/#features), so they work
 // from every page.
-import { GITHUB_URL } from '../data/site';
+import { GITHUB_URL, SHOW_PRICING } from '../data/site';
 
 const links = [
   { href: '/#cores', label: 'Every core' },
@@ -12,7 +12,7 @@ const links = [
   { href: '/#storages', label: 'Storages' },
   { href: '/#cli', label: 'Command line' },
   { href: '/#faq', label: 'FAQ' },
-  { href: '/pricing', label: 'Pricing' },
+  ...(SHOW_PRICING ? [{ href: '/pricing', label: 'Pricing' }] : []),
 ];
 ---
 

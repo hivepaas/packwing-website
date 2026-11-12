@@ -15,6 +15,8 @@ interface Props {
   jsonLd?: object[];
   keywords?: string;
   ogImageAlt?: string;
+  /** Kept out of search engines: a page built but not offered. */
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   jsonLd = [],
   keywords,
   ogImageAlt = 'packwing — the file archiver that opens archives safely.',
+  noindex = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL(SITE_URL);
@@ -44,7 +47,7 @@ const ogImage = new URL('/og-image.png', site).href;
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="author" content="HivePaaS" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <link rel="canonical" href={pageUrl} />
 
     <!-- Open Graph / Facebook -->

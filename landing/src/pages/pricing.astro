@@ -2,7 +2,7 @@
 // pricing.astro - Free, Pro bought once, and Enterprise by the seat. The app's
 // Settings › License opens this page for Buy and Renew.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_URL, PORTAL_PRICING_URL, POLICIES_DOC_URL } from '../data/site';
+import { SITE_URL, PORTAL_PRICING_URL, POLICIES_DOC_URL, SHOW_PRICING } from '../data/site';
 
 const pageTitle = 'Pricing — packwing';
 const pageDescription =
@@ -67,6 +67,7 @@ const faqData = {
   path="/pricing"
   keywords="packwing pricing, packwing pro, file archiver license, buy once, perpetual license, enterprise file archiver"
   jsonLd={[offers, faqData]}
+  noindex={!SHOW_PRICING}
 >
   <section class="section pricing-top">
     <div class="container">

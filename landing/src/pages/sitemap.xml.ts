@@ -1,6 +1,7 @@
 // The sitemap, built with the site from its pages: every .astro page under
 // src/pages, so a new page is listed without editing this file.
 import type { APIRoute } from 'astro';
+import { SHOW_PRICING } from '../data/site';
 
 const paths = Object.keys(import.meta.glob('./**/*.astro'))
   .map(
@@ -10,6 +11,7 @@ const paths = Object.keys(import.meta.glob('./**/*.astro'))
         .replace(/(index)?\.astro$/, '')
         .replace(/\/$/, '') || '/'
   )
+  .filter((path) => SHOW_PRICING || path !== '/pricing')
   .sort();
 
 export const GET: APIRoute = ({ site }) => {
