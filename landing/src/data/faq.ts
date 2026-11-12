@@ -50,7 +50,7 @@ export const faq: FaqItem[] = [
   {
     question: 'How do I install it, and how does it update?',
     answer:
-      'Download it for your system above: a .dmg for macOS, an installer for Windows (for everyone, or for you alone), an AppImage, a .deb or an .rpm for Linux. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app, the Windows installer and the AppImage update themselves when you say so; for a .deb or an .rpm, the app shows the commands. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
+      'Download it for your system above: a .dmg for macOS, an installer for Windows (for everyone, or for you alone), a .deb or an .rpm for Linux, or pkw, the command line, alone. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app and the Windows installer update themselves when you say so; for a .deb or an .rpm, the app shows the commands; pkw alone does not update itself. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
   },
   {
     question: 'Is there a mobile app?',

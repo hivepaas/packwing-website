@@ -11,7 +11,7 @@ const file = (name: string) =>
   `${GITHUB_URL}/releases/download/v${VERSION}/${name}`;
 const v = VERSION;
 
-export type OsId = 'macos' | 'windows' | 'linux' | 'ios' | 'android';
+export type OsId = 'macos' | 'windows' | 'linux' | 'cli' | 'ios' | 'android';
 
 export interface Download {
   label: string;
@@ -101,20 +101,10 @@ export const systems: Os[] = [
       'glibc 2.35+ (Ubuntu 22.04, Debian 12, Fedora, openSUSE Leap 15.6 or newer), Wayland or X11',
     downloads: [
       {
-        label: 'AppImage',
-        note: 'x86_64 · any distribution, updates itself',
-        href: file(`packwing_${v}_linux_x86_64.AppImage`),
-        primary: true,
-      },
-      {
-        label: 'AppImage',
-        note: 'aarch64',
-        href: file(`packwing_${v}_linux_aarch64.AppImage`),
-      },
-      {
         label: 'Debian / Ubuntu',
         note: 'amd64 · .deb',
         href: file(`packwing_${v}_amd64.deb`),
+        primary: true,
       },
       {
         label: 'Debian / Ubuntu',
@@ -131,31 +121,16 @@ export const systems: Os[] = [
         note: 'aarch64 · .rpm',
         href: file(`packwing_${v}_aarch64.rpm`),
       },
-      {
-        label: 'Tarball',
-        note: 'x86_64 · .tar.gz',
-        href: file(`packwing_${v}_linux_x86_64.tar.gz`),
-      },
-      {
-        label: 'Tarball',
-        note: 'aarch64 · .tar.gz',
-        href: file(`packwing_${v}_linux_aarch64.tar.gz`),
-      },
     ],
     steps: [
-      'AppImage: make it executable and run it. It updates itself.',
       'Debian or Ubuntu: install the .deb with apt.',
       'Fedora: install the .rpm with dnf. openSUSE: with zypper.',
-      'The .deb and .rpm do not update themselves: the app shows the commands that do.',
+      'When a new version is out, the app shows the commands that install it, with its SHA-256.',
       'With the .deb, packwing’s items are in Nautilus’s own right-click menu: run nautilus -q once.',
     ],
     firstRun:
-      'Where FUSE is missing, run the AppImage with --appimage-extract-and-run. The .rpm is not signed: dnf warns and goes on, and zypper needs --no-gpg-checks.',
-    commands: `# AppImage
-chmod +x packwing_${v}_linux_x86_64.AppImage
-./packwing_${v}_linux_x86_64.AppImage
-
-# Debian / Ubuntu
+      'The .rpm is not signed: dnf warns and goes on, and zypper needs --no-gpg-checks.',
+    commands: `# Debian / Ubuntu
 curl -LO ${file(`packwing_${v}_amd64.deb`)}
 sudo apt install ./packwing_${v}_amd64.deb
 
@@ -166,6 +141,61 @@ sudo dnf install ./packwing_${v}_x86_64.rpm
 # openSUSE
 curl -LO ${file(`packwing_${v}_x86_64.rpm`)}
 sudo zypper --no-gpg-checks install ./packwing_${v}_x86_64.rpm`,
+  },
+  {
+    id: 'cli',
+    name: 'Command line',
+    requires:
+      'pkw alone, with no app: Linux with glibc 2.34+ (Ubuntu 22.04, Debian 12, RHEL 9 or newer), macOS 13 or later, Windows 10 or 11 x64',
+    downloads: [
+      {
+        label: 'Linux',
+        note: 'x86_64 · .tar.gz',
+        href: file(`pkw_${v}_linux_x86_64.tar.gz`),
+        primary: true,
+      },
+      {
+        label: 'Linux',
+        note: 'aarch64 · .tar.gz',
+        href: file(`pkw_${v}_linux_aarch64.tar.gz`),
+      },
+      {
+        label: 'macOS',
+        note: 'Apple silicon · .tar.gz',
+        href: file(`pkw_${v}_macos_aarch64.tar.gz`),
+      },
+      {
+        label: 'macOS',
+        note: 'Intel · .tar.gz',
+        href: file(`pkw_${v}_macos_x86_64.tar.gz`),
+      },
+      {
+        label: 'Windows',
+        note: 'x64 · .zip',
+        href: file(`pkw_${v}_windows_x86_64.zip`),
+      },
+    ],
+    steps: [
+      'For a server, a terminal over SSH or a script: the same pkw the app’s packages hold, alone.',
+      'Unpack it and put pkw (pkw.exe on Windows) in a folder on your PATH.',
+      'Its manual pages and its completions for bash, zsh and fish come with it; README.txt says where they go.',
+      'It does not update itself: a newer one is on the releases page.',
+    ],
+    firstRun:
+      'On macOS pkw is signed and notarized, and runs from Terminal with no question. On Linux it needs only the C library. Try pkw --help.',
+    commands: `# Linux x86_64
+curl -LO ${file(`pkw_${v}_linux_x86_64.tar.gz`)}
+tar -xzf pkw_${v}_linux_x86_64.tar.gz
+mkdir -p ~/.local/bin
+install -m 755 pkw_${v}_linux_x86_64/pkw ~/.local/bin/pkw
+
+# macOS (Apple silicon)
+curl -LO ${file(`pkw_${v}_macos_aarch64.tar.gz`)}
+tar -xzf pkw_${v}_macos_aarch64.tar.gz
+mkdir -p ~/.local/bin
+install -m 755 pkw_${v}_macos_aarch64/pkw ~/.local/bin/pkw
+
+~/.local/bin/pkw --version`,
   },
 ];
 
