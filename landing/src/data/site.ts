@@ -6,6 +6,10 @@ export const HIVEPACK_URL = 'https://github.com/hivepaas/hivepack-rs';
 export const HIVEPAAS_URL = 'https://hivepaas.com';
 export const SHELLWING_URL = 'https://shellwing.app';
 export const TRACEWING_URL = 'https://tracewing.app';
+// Where a license is bought, renewed and tried: HivePaaS's portal, with Paddle
+// as the merchant of record.
+export const PORTAL_PRICING_URL =
+  'https://portal.hivepaas.com/pricing/packwing';
 
 // The repository's docs.
 export const BUILD_DOC_URL = `${GITHUB_URL}#readme`;

@@ -1,0 +1,388 @@
+---
+// pricing.astro - Free, Pro bought once, and Enterprise by the seat. The app's
+// Settings › License opens this page for Buy and Renew.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, PORTAL_PRICING_URL, POLICIES_DOC_URL } from '../data/site';
+
+const pageTitle = 'Pricing — packwing';
+const pageDescription =
+  'packwing is free. Pro is $15 once: yours for good, with a year of new versions, renewed for $8. Enterprise is $4 per person a month, or $48 a year, managed by policy.';
+
+const faq = [
+  {
+    question: 'What does “yours for good” mean?',
+    answer:
+      'Pro is bought once, not rented. Every version of packwing released in the year after you buy it stays Pro on your computers for as long as you use it, with no subscription and nothing that runs out.',
+  },
+  {
+    question: 'What if my year of updates ends?',
+    answer:
+      'The versions you have keep working as Pro. A version released after your year runs as Free until you renew, and packwing tells you so before you update to it, so an update never takes Pro away by surprise. Renewing costs $8 while your year runs and for 90 days after it ends, and adds a year of new versions.',
+  },
+  {
+    question: 'Do security fixes need a renewal?',
+    answer:
+      'No. A fix of a version you have, security fixes among them, stays covered whenever it is released: fixes go out for every version line still in use, and a line your year covers stays Pro with all of them.',
+  },
+  {
+    question: 'Does packwing send anything?',
+    answer:
+      'No. A license key is checked on your computer, and nothing about it is sent anywhere. The one exception is Enterprise’s LicenseRefresh policy, which an organization turns on so that packwing asks for a newer key once a day; it sends the key and nothing else.',
+  },
+  {
+    question: 'Can I get a refund?',
+    answer:
+      'Yes, within 14 days of a payment. Paddle, our reseller and merchant of record, handles payments and refunds: ask through paddle.net, or the link in your receipt.',
+  },
+];
+
+const siteUrl = `${SITE_URL}/pricing`;
+const offers = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'packwing',
+  url: siteUrl,
+  description: pageDescription,
+  offers: [
+    { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro', price: '15', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro renewal', price: '8', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Enterprise, a person a month', price: '4', priceCurrency: 'USD' },
+  ],
+};
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  path="/pricing"
+  keywords="packwing pricing, packwing pro, file archiver license, buy once, perpetual license, enterprise file archiver"
+  jsonLd={[offers, faqData]}
+>
+  <section class="section pricing-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pricing</span>
+        <h1 class="section-title"><span class="text-gradient-white">Free to use. Pro to keep.</span></h1>
+        <p class="section-desc">
+          packwing is free software, and Free does almost everything. Pro is bought once and is yours for good.
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan bento-card">
+          <h2 class="plan-name">Free</h2>
+          <p class="plan-price"><span class="amount">$0</span></p>
+          <p class="plan-lead">Everything most people need, for good.</p>
+          <ul class="check-list">
+            <li>Every feature but signing files and an audit log of your own</li>
+            <li>One storage across a network: S3, WebDAV or SFTP</li>
+            <li>Folders on your computer, without limit</li>
+            <li>Any signature can be checked</li>
+            <li>What your organization’s policies turn on is never held back</li>
+          </ul>
+          <div class="plan-actions">
+            <a href="/#get" class="btn btn-secondary">Download</a>
+          </div>
+        </article>
+
+        <article class="plan plan-featured bento-card">
+          <span class="plan-flag">Bought once</span>
+          <h2 class="plan-name">Pro</h2>
+          <p class="plan-price"><span class="amount">$15</span><span class="per">once</span></p>
+          <p class="plan-lead">Yours for good, with a year of new versions.</p>
+          <ul class="check-list">
+            <li>Everything, with any number of storages</li>
+            <li>Sign files, and keep an audit log</li>
+            <li>Every version released in the year after you buy stays Pro for good, with all of its fixes</li>
+            <li>Renew for <strong>$8</strong> for another year of new versions, while your year runs and for 90 days after</li>
+            <li>A version from after your year runs as Free until you renew, and the app says so before you update</li>
+          </ul>
+          <div class="plan-actions">
+            <a href={PORTAL_PRICING_URL} class="btn btn-primary">Buy Pro</a>
+            <a href={PORTAL_PRICING_URL} class="btn btn-secondary">Try Pro free for 14 days</a>
+          </div>
+        </article>
+
+        <article class="plan bento-card">
+          <h2 class="plan-name">Enterprise</h2>
+          <div class="billing" role="radiogroup" aria-label="Billing">
+            <input type="radio" name="billing" id="billing-monthly" checked />
+            <label for="billing-monthly">Monthly</label>
+            <input type="radio" name="billing" id="billing-yearly" />
+            <label for="billing-yearly">Yearly</label>
+            <p class="plan-price monthly"><span class="amount">$4</span><span class="per">a person a month</span></p>
+            <p class="plan-price yearly"><span class="amount">$48</span><span class="per">a person a year</span></p>
+          </div>
+          <p class="plan-lead">Pro for your organization, by the seat.</p>
+          <ul class="check-list">
+            <li>Everything in Pro, for as many people as you have seats</li>
+            <li>Deployed by policy: <code>LicenseKey</code> on Windows, macOS and Linux</li>
+            <li>A key runs by the year, billed monthly or yearly</li>
+            <li>Seats changed whenever you need, prorated</li>
+            <li>
+              Optional <code>LicenseRefresh</code>: a new key reaches every computer within a day, with nothing deployed
+              again
+            </li>
+          </ul>
+          <div class="plan-actions">
+            <a href={PORTAL_PRICING_URL} class="btn btn-primary">Buy Enterprise</a>
+            <a href={POLICIES_DOC_URL} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">The policies</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="checkout-note">
+        Prices are in US dollars, before any tax your country adds. Checkout is at{' '}
+        <a href={PORTAL_PRICING_URL}>portal.hivepaas.com</a>, with{' '}
+        <a href="https://www.paddle.com" target="_blank" rel="noopener noreferrer">Paddle</a>{' '}
+        as our reseller and merchant of record: Paddle takes the payment, adds the tax, and sends the receipt.
+      </p>
+    </div>
+  </section>
+
+  <section class="section pricing-faq" id="faq">
+    <div class="container faq-container">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title"><span class="text-gradient-white">About licenses.</span></h2>
+      </div>
+
+      <div class="faq-list">
+        {
+          faq.map((item, i) => (
+            <details class="faq-item" open={i === 0}>
+              <summary>
+                {item.question}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pricing-top {
+    padding-top: calc(var(--header-height) + 4.5rem);
+  }
+
+  .pricing-top .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .plans {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 960px) {
+    .plans {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .plan {
+    gap: 0.25rem;
+  }
+
+  .plan-featured {
+    border-color: rgba(122, 214, 192, 0.45);
+    box-shadow: 0 0 40px -12px var(--accent-glow);
+  }
+
+  .plan-flag {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    color: var(--accent-light);
+    background: rgba(122, 214, 192, 0.1);
+    border: 1px solid rgba(122, 214, 192, 0.35);
+  }
+
+  .plan-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0.25rem;
+  }
+
+  .plan-price .amount {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .plan-price .per {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .plan-lead {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .plan .check-list {
+    flex: 1;
+    margin-bottom: 1.75rem;
+  }
+
+  .plan-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Monthly or yearly, without a script: the radio shows its price. */
+  .billing {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .billing input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .billing label {
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-card);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .billing input:checked + label {
+    color: var(--accent-light);
+    border-color: rgba(122, 214, 192, 0.45);
+    background: rgba(122, 214, 192, 0.1);
+  }
+
+  .billing input:focus-visible + label {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .billing .plan-price {
+    flex-basis: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .billing .yearly,
+  #billing-yearly:checked ~ .monthly {
+    display: none;
+  }
+
+  #billing-yearly:checked ~ .yearly {
+    display: flex;
+  }
+
+  .checkout-note {
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .pricing-faq {
+    padding-top: 2rem;
+  }
+
+  .faq-container {
+    max-width: 860px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    border-radius: 16px;
+    border: 1px solid var(--border-card);
+    background: var(--bg-card);
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(122, 214, 192, 0.3);
+  }
+
+  summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.4rem;
+    font-weight: 600;
+    font-size: 1.02rem;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary svg {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+  }
+
+  .faq-item[open] summary svg {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .faq-item p {
+    padding: 0 1.4rem 1.3rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+</style>
