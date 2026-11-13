@@ -67,6 +67,8 @@ export const systems: Os[] = [
     ],
     firstRun:
       'Signed and notarized by Apple. macOS asks once whether to open an app downloaded from the internet: choose Open.',
+    commands: `# Or with Homebrew
+brew install --cask hivepaas/tap/packwing`,
   },
   {
     id: 'windows',
@@ -179,11 +181,15 @@ sudo zypper --no-gpg-checks install ./packwing_${v}_x86_64.rpm`,
       'For a server, a terminal over SSH or a script: the same pkw the app’s packages hold, alone.',
       'Unpack it and put pkw (pkw.exe on Windows) in a folder on your PATH.',
       'Its manual pages and its completions for bash, zsh and fish come with it; README.txt says where they go.',
-      'It does not update itself: a newer one is on the releases page.',
+      'With Homebrew, on macOS and Linux, one command installs it with its manual pages and completions, and brew upgrade updates it.',
+      'Unpacked by hand, it does not update itself: a newer one is on the releases page.',
     ],
     firstRun:
       'On macOS pkw is signed and notarized, and runs from Terminal with no question. On Linux it needs only the C library. Try pkw --help.',
-    commands: `# Linux x86_64
+    commands: `# Homebrew (macOS and Linux)
+brew install hivepaas/tap/pkw
+
+# Linux x86_64
 curl -LO ${file(`pkw_${v}_linux_x86_64.tar.gz`)}
 tar -xzf pkw_${v}_linux_x86_64.tar.gz
 mkdir -p ~/.local/bin
