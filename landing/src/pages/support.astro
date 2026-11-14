@@ -1,0 +1,75 @@
+---
+// support.astro - where to get help with packwing. The Mac App Store links here
+// as the app's support page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { GITHUB_URL, ISSUES_URL, SUPPORT_EMAIL } from '../data/site';
+
+const pageTitle = 'Support — packwing';
+const pageDescription =
+  'Help with packwing: report a problem on GitHub, or write to us. Purchases, restoring Pro, and the Mac App Store.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  path="/support"
+  keywords="packwing support, packwing help, file archiver support"
+>
+  <section class="section prose-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Support</span>
+        <h1 class="section-title"><span class="text-gradient-white">We're here to help.</span></h1>
+        <p class="section-desc">Something not working, or a question about packwing? Tell us.</p>
+      </div>
+
+      <div class="prose">
+        <h2>Contact</h2>
+        <ul>
+          <li>
+            <strong>Email:</strong> <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+          </li>
+          <li>
+            <strong>A bug or an idea:</strong>
+            <a href={ISSUES_URL} target="_blank" rel="noopener noreferrer">open an issue on GitHub</a>. Settings › About ›
+            Report a problem opens one for you.
+          </li>
+        </ul>
+        <p>
+          It helps to say which version of packwing you have (Settings › About), your system, and, for an archive that
+          will not open, what kind it is and where it came from. Never send us a password.
+        </p>
+
+        <h2>The Mac App Store</h2>
+        <ul>
+          <li>
+            <strong>Pro on another Mac:</strong> sign in to the App Store with the same Apple Account, then open Settings
+            › License in packwing and choose <em>Restore Purchases</em>.
+          </li>
+          <li>
+            <strong>Refunds</strong> of App Store purchases are Apple's: ask at
+            <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.
+          </li>
+          <li>
+            The App Store's version runs in the App Sandbox: it reaches the files and folders you open, choose or drop,
+            and asks for a folder next to an archive (to extract there) with <em>Allow access…</em>.
+          </li>
+        </ul>
+
+        <h2>Licenses bought on this website</h2>
+        <p>
+          Your key is in the email from Paddle. Paste it in Settings › License. Refunds within 14 days of a payment are
+          through <a href="https://paddle.net" target="_blank" rel="noopener noreferrer">paddle.net</a>, or the link in
+          your receipt.
+        </p>
+
+        <h2>More</h2>
+        <ul>
+          <li><a href="/#faq">Questions people ask</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">packwing's source code</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,112 @@
+---
+// privacy.astro - what packwing, the app, and this website do with your data:
+// next to nothing. The Mac App Store links here as the app's privacy policy.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { GITHUB_URL, SUPPORT_EMAIL } from '../data/site';
+
+const pageTitle = 'Privacy — packwing';
+const pageDescription =
+  'packwing collects no personal data: no analytics, no tracking, no accounts. Your files stay on your computer, and the app connects only where you ask it to.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  path="/privacy"
+  keywords="packwing privacy, packwing privacy policy, file archiver privacy"
+>
+  <section class="section prose-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Privacy</span>
+        <h1 class="section-title"><span class="text-gradient-white">Your files are yours.</span></h1>
+        <p class="section-desc">
+          packwing collects no personal data. There are no analytics, no tracking, no ads and no accounts.
+        </p>
+      </div>
+
+      <div class="prose">
+        <p>
+          This policy covers packwing, the app, on macOS (from this website or the Mac App Store), Windows and Linux,
+          its command line <code>pkw</code>, and this website. packwing is made by HivePaaS.
+        </p>
+
+        <h2>Your files</h2>
+        <p>
+          packwing opens, makes and extracts archives on your computer. What is in your files, their names and their
+          passwords never leave it: nothing is uploaded, and nothing about them is sent to us or to anyone else.
+        </p>
+        <p>
+          The audit log, when you or your organization turn it on, is a file on your computer. packwing never sends
+          it anywhere.
+        </p>
+
+        <h2>When packwing connects to the Internet</h2>
+        <p>Only in these cases, and never to send what is in your files:</p>
+        <ul>
+          <li>
+            <strong>Looking for updates.</strong> The versions downloaded from this website look once a day, while
+            <em>Look for updates once a day</em> is on (Settings › About), for the list of releases on GitHub
+            (<code>raw.githubusercontent.com</code>), and download a new version from GitHub only when you say so. The
+            request carries packwing's version and nothing about you. The Mac App Store's version never looks: the App
+            Store updates it.
+          </li>
+          <li>
+            <strong>Your storages.</strong> An S3, WebDAV or SFTP storage you add is reached at the address you gave,
+            with the credentials you gave. packwing keeps those credentials in your system's keychain, and sends them
+            to that server alone.
+          </li>
+          <li>
+            <strong>Enterprise licenses.</strong> When an organization turns on its <code>LicenseRefresh</code> policy,
+            packwing asks <code>portal.hivepaas.com</code> once a day for a newer key, sending the current key and
+            nothing else. Otherwise a license key is checked on your computer, and nothing about it is sent.
+          </li>
+        </ul>
+        <p>
+          GitHub, the servers of your storages and our portal see the address your computer connects from, as any
+          server does. GitHub's use of it is covered by
+          <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">its privacy statement</a>.
+        </p>
+
+        <h2>Purchases</h2>
+        <ul>
+          <li>
+            <strong>In the Mac App Store,</strong> Apple handles the purchase, under
+            <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's privacy policy</a>.
+            packwing asks the App Store, on your Mac, whether you hold Pro; we receive no personal data from Apple
+            about you.
+          </li>
+          <li>
+            <strong>On this website,</strong> checkout is at <code>portal.hivepaas.com</code>, with
+            <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">Paddle</a> as our
+            reseller and merchant of record. Paddle receives what you enter to pay, and we receive what we need to
+            issue and renew your license key: your name, email address and what you bought.
+          </li>
+        </ul>
+
+        <h2>This website</h2>
+        <p>
+          packwing.app sets no cookies and runs no analytics or tracking scripts. The server that hosts it keeps
+          ordinary request logs (the address a request came from, the page and the browser) to keep the site running
+          and safe, and does not use them for anything else.
+        </p>
+
+        <h2>Children</h2>
+        <p>packwing collects no data from anyone, children included.</p>
+
+        <h2>Changes</h2>
+        <p>
+          If this policy changes, the new one is published on this page, with its date below. packwing is open source:
+          what it sends can be checked in <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">its code</a>.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about privacy: <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+        </p>
+
+        <p class="updated">Last updated November 14, 2026.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
