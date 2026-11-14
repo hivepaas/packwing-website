@@ -6,7 +6,7 @@ import { SITE_URL, PORTAL_PRICING_URL, POLICIES_DOC_URL, SHOW_PRICING } from '..
 
 const pageTitle = 'Pricing — packwing';
 const pageDescription =
-  'packwing is free. Pro is $15 once: yours for good, with a year of new versions, renewed for $8. Enterprise is $4 per person a month, or $48 a year, managed by policy.';
+  'packwing is free. Pro is $10 once: yours for good, with a year of new versions, renewed for $7. Enterprise is $4 per person a month, or $48 a year, managed by policy.';
 
 const faq = [
   {
@@ -17,7 +17,7 @@ const faq = [
   {
     question: 'What if my year of updates ends?',
     answer:
-      'The versions you have keep working as Pro. A version released after your year runs as Free until you renew, and packwing tells you so before you update to it, so an update never takes Pro away by surprise. Renewing costs $8 while your year runs and for 90 days after it ends, and adds a year of new versions.',
+      'The versions you have keep working as Pro. A version released after your year runs as Free until you renew, and packwing tells you so before you update to it, so an update never takes Pro away by surprise. Renewing costs $7 while your year runs and for 90 days after it ends, and adds a year of new versions.',
   },
   {
     question: 'Do security fixes need a renewal?',
@@ -45,8 +45,8 @@ const offers = {
   description: pageDescription,
   offers: [
     { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Pro', price: '15', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Pro renewal', price: '8', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro', price: '10', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro renewal', price: '7', priceCurrency: 'USD' },
     { '@type': 'Offer', name: 'Enterprise, a person a month', price: '4', priceCurrency: 'USD' },
   ],
 };
@@ -99,13 +99,13 @@ const faqData = {
         <article class="plan plan-featured bento-card">
           <span class="plan-flag">Bought once</span>
           <h2 class="plan-name">Pro</h2>
-          <p class="plan-price"><span class="amount">$15</span><span class="per">once</span></p>
+          <p class="plan-price"><span class="amount">$10</span><span class="per">once</span></p>
           <p class="plan-lead">Yours for good, with a year of new versions.</p>
           <ul class="check-list">
             <li>Everything, with any number of storages</li>
             <li>Sign files, and keep an audit log</li>
             <li>Every version released in the year after you buy stays Pro for good, with all of its fixes</li>
-            <li>Renew for <strong>$8</strong> for another year of new versions, while your year runs and for 90 days after</li>
+            <li>Renew for <strong>$7</strong> for another year of new versions, while your year runs and for 90 days after</li>
             <li>A version from after your year runs as Free until you renew, and the app says so before you update</li>
           </ul>
           <div class="plan-actions">
