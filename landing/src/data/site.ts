@@ -22,3 +22,7 @@ export const POLICIES_DOC_URL = `${GITHUB_URL}/blob/main/docs/policies.md`;
 export const UPDATES_DOC_URL = `${GITHUB_URL}/blob/main/docs/updates.md`;
 export const LICENSE_URL = `${GITHUB_URL}/blob/main/LICENSE`;
 export const CONTRIBUTING_URL = `${GITHUB_URL}/blob/main/CONTRIBUTING.md`;
+
+// Where people write to us: support, and questions about privacy.
+export const SUPPORT_EMAIL = 'tiendc.hp@gmail.com';
+export const ISSUES_URL = `${GITHUB_URL}/issues`;

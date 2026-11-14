@@ -503,3 +503,60 @@ code {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* A page of text: /privacy, /support. */
+.prose-top {
+  padding-top: calc(var(--header-height) + 4.5rem);
+}
+
+.prose-top .section-header {
+  margin-bottom: 3rem;
+}
+
+.prose {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.prose h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.prose p,
+.prose ul {
+  margin-bottom: 1rem;
+}
+
+.prose ul {
+  padding-left: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  color: var(--text-primary);
+}
+
+.prose a {
+  color: var(--accent);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose .updated {
+  margin-top: 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
