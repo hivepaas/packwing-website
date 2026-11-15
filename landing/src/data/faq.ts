@@ -1,6 +1,8 @@
 // The home page's questions: shown by FAQ.astro, and given to search engines
 // as a FAQPage (index.astro). Plain text, as JSON-LD needs.
 
+import { SHOW_APP_STORE } from './site';
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -52,6 +54,15 @@ export const faq: FaqItem[] = [
     answer:
       'Download it for your system above: a .dmg for macOS, an installer for Windows (for everyone, or for you alone), a .deb or an .rpm for Linux, or pkw, the command line, alone. Once a day packwing looks for a newer version, in a list it believes only when its signatures verify, and a badge says so; nothing is downloaded or installed until you ask. The .dmg app and the Windows installer update themselves when you say so; for a .deb or an .rpm, the app shows the commands; pkw alone does not update itself. The Windows installer is not signed yet, so SmartScreen asks you to allow it the first time.',
   },
+  ...(SHOW_APP_STORE
+    ? [
+        {
+          question: 'The Mac App Store, or the .dmg?',
+          answer:
+            'Both are packwing, and open, extract and make the same archives. The App Store’s runs in Apple’s sandbox: the App Store updates it and Pro is bought in the app, it asks once for each folder it extracts to or reads beside an archive, its right-click items are macOS services, under Quick Actions or Services, with no submenu of their own, it has no pkw, and SFTP trusts servers and signs in with key files you add rather than reading ~/.ssh or using the SSH agent. The .dmg has none of these limits: it puts its own submenu in Finder, comes with pkw, and updates itself when you say so.',
+        },
+      ]
+    : []),
   {
     question: 'Is there a mobile app?',
     answer:

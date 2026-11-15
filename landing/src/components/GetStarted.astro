@@ -4,6 +4,7 @@
 // launch. Without JavaScript every system shows, one under the other.
 import { GITHUB_URL, BUILD_DOC_URL } from '../data/site';
 import { VERSION, RELEASE_URL, systems, comingSoon } from '../data/downloads';
+import { APP_STORE_URL, SHOW_APP_STORE } from '../data/site';
 
 const icons: Record<string, string> = {
   macos:
@@ -120,6 +121,20 @@ const tabsOf = [...systems, ...comingSoon];
                   </li>
                 ))}
               </ul>
+              {SHOW_APP_STORE && os.appStore && (
+                <div class="app-store">
+                  <a href={APP_STORE_URL} class="file">
+                    <span class="file-text">
+                      <span class="file-label">Mac App Store</span>
+                      <span class="file-note">Apple silicon and Intel</span>
+                    </span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                      <path d="M7 17L17 7m0 0H9m8 0v8" />
+                    </svg>
+                  </a>
+                  <p class="requires">{os.appStore}</p>
+                </div>
+              )}
             </div>
 
             <div class="howto">
@@ -498,6 +513,13 @@ const tabsOf = [...systems, ...comingSoon];
 
   .copy:hover {
     color: var(--text-primary);
+  }
+
+  .app-store {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
   }
 
   .first-run {

@@ -11,6 +11,12 @@ export const TRACEWING_URL = 'https://tracewing.app';
 // still built, as the app's Settings › License opens it for Buy and Renew.
 export const SHOW_PRICING = false;
 
+// packwing on the Mac App Store, and whether the site offers it: in the macOS
+// downloads and the FAQ. Off until Apple has approved the app, as the link
+// leads nowhere before.
+export const APP_STORE_URL = 'https://apps.apple.com/app/id6834744685';
+export const SHOW_APP_STORE = false;
+
 // Where a license is bought, renewed and tried: HivePaaS's portal, with Paddle
 // as the merchant of record.
 export const PORTAL_PRICING_URL =
