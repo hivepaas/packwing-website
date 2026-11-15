@@ -3,7 +3,7 @@
 
 import { GITHUB_URL } from './site';
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.3.0';
 export const RELEASE_URL = `${GITHUB_URL}/releases/tag/v${VERSION}`;
 export const RELEASES_URL = `${GITHUB_URL}/releases`;
 
@@ -33,6 +33,9 @@ export interface Os {
   firstRun: string;
   /** Commands to paste, if any. */
   commands?: string;
+  /** How its Mac App Store app differs from these files, when the site offers it
+   * (SHOW_APP_STORE). */
+  appStore?: string;
 }
 
 /** A system with an app on the way: a tab that says so, and no files. */
@@ -69,6 +72,8 @@ export const systems: Os[] = [
       'Signed and notarized by Apple. macOS asks once whether to open an app downloaded from the internet: choose Open.',
     commands: `# Or with Homebrew
 brew install --cask hivepaas/tap/packwing`,
+    appStore:
+      'Also on the Mac App Store, in Apple’s sandbox, updated by the App Store, with Pro bought in the app. There it has no pkw, its right-click items are under Quick Actions or Services, it asks once for each folder it works in, and SFTP signs in with a key file you add rather than ~/.ssh. The .dmg has none of these limits.',
   },
   {
     id: 'windows',
