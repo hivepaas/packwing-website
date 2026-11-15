@@ -6,7 +6,7 @@ import { SITE_URL, PORTAL_PRICING_URL, POLICIES_DOC_URL, SHOW_PRICING } from '..
 
 const pageTitle = 'Pricing — packwing';
 const pageDescription =
-  'packwing is free. Pro is $10 once: yours for good, with a year of new versions, renewed for $7. Enterprise is $4 per person a month, or $48 a year, managed by policy.';
+  'packwing is free. Pro is $10 once: yours for good, with a year of new versions, renewed for $7. Enterprise is $2 per person a month, or $20 a year, managed by policy.';
 
 const faq = [
   {
@@ -47,7 +47,7 @@ const offers = {
     { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
     { '@type': 'Offer', name: 'Pro', price: '10', priceCurrency: 'USD' },
     { '@type': 'Offer', name: 'Pro renewal', price: '7', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Enterprise, a person a month', price: '4', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Enterprise, a person a month', price: '2', priceCurrency: 'USD' },
   ],
 };
 const faqData = {
@@ -121,8 +121,8 @@ const faqData = {
             <label for="billing-monthly">Monthly</label>
             <input type="radio" name="billing" id="billing-yearly" />
             <label for="billing-yearly">Yearly</label>
-            <p class="plan-price monthly"><span class="amount">$4</span><span class="per">a person a month</span></p>
-            <p class="plan-price yearly"><span class="amount">$48</span><span class="per">a person a year</span></p>
+            <p class="plan-price monthly"><span class="amount">$2</span><span class="per">a person a month</span></p>
+            <p class="plan-price yearly"><span class="amount">$20</span><span class="per">a person a year</span></p>
           </div>
           <p class="plan-lead">Pro for your organization, by the seat.</p>
           <ul class="check-list">
