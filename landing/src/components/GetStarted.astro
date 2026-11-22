@@ -3,7 +3,7 @@
 // tab for each system with its files, how to install them and the first
 // launch. Without JavaScript every system shows, one under the other.
 import { GITHUB_URL, BUILD_DOC_URL } from '../data/site';
-import { VERSION, RELEASE_URL, systems, comingSoon } from '../data/downloads';
+import { VERSION, RELEASE_URL, systems, storeApps, comingSoon } from '../data/downloads';
 import { APP_STORE_URL, SHOW_APP_STORE } from '../data/site';
 
 const icons: Record<string, string> = {
@@ -18,7 +18,7 @@ const icons: Record<string, string> = {
 };
 icons.ios = icons.macos;
 
-const tabsOf = [...systems, ...comingSoon];
+const tabsOf = [...systems, ...storeApps, ...comingSoon];
 ---
 
 <section class="section" id="get">
@@ -33,8 +33,9 @@ const tabsOf = [...systems, ...comingSoon];
           <span class="text-gradient-sky"> {VERSION}</span>
         </h2>
         <p class="dl-desc">
-          Free and open source, for macOS, Windows and Linux; iOS and Android are coming soon. It tells you when a new
-          version is out, and installs it when you say so. Only need the command line? pkw comes alone too.
+          Free and open source, for macOS, Windows and Linux, and on the App Store for iPhone and iPad; Android is
+          coming soon. It tells you when a new version is out, and installs it when you say so. Only need the command
+          line? pkw comes alone too.
         </p>
 
         <div class="dl-main" id="dlMain">
@@ -57,6 +58,19 @@ const tabsOf = [...systems, ...comingSoon];
             })
           }
           {
+            storeApps.map((os) => (
+              <div class="dl-pick" data-os={os.id} hidden>
+                <a href={os.href} class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d={icons[os.id]} />
+                  </svg>
+                  Download on the App Store
+                </a>
+                <span class="dl-pick-note">{os.note}</span>
+              </div>
+            ))
+          }
+          {
             comingSoon.map((os) => (
               <div class="dl-pick" data-os={os.id} hidden>
                 <span class="btn btn-lg soon-badge">
@@ -65,7 +79,7 @@ const tabsOf = [...systems, ...comingSoon];
                   </svg>
                   {os.name}: coming soon
                 </span>
-                <span class="dl-pick-note">For now, packwing runs on macOS, Windows and Linux.</span>
+                <span class="dl-pick-note">For now, packwing runs on macOS, Windows, Linux, iPhone and iPad.</span>
               </div>
             ))
           }
@@ -152,6 +166,42 @@ const tabsOf = [...systems, ...comingSoon];
                   <pre>{os.commands}</pre>
                 </div>
               )}
+              <div class="first-run">
+                <strong>First launch.</strong> {os.firstRun}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      {
+        storeApps.map((os) => (
+          <div class="panel" role="tabpanel" id={`panel-${os.id}`} aria-labelledby={`tab-${os.id}`} data-os={os.id}>
+            <div class="files">
+              <h3 class="panel-title">{os.name}</h3>
+              <p class="requires">{os.requires}</p>
+              <ul class="file-list">
+                <li>
+                  <a href={os.href} class="file primary" target="_blank" rel="noopener noreferrer">
+                    <span class="file-text">
+                      <span class="file-label">{os.label}</span>
+                      <span class="file-note">{os.note}</span>
+                    </span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                      <path d="M7 17L17 7m0 0H9m8 0v8" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="howto">
+              <h4>Install</h4>
+              <ol class="steps">
+                {os.steps.map((step) => (
+                  <li>{step}</li>
+                ))}
+              </ol>
               <div class="first-run">
                 <strong>First launch.</strong> {os.firstRun}
               </div>
@@ -553,7 +603,9 @@ const tabsOf = [...systems, ...comingSoon];
     const nav = navigator as Navigator & { userAgentData?: { platform?: string } };
     const p = `${nav.userAgentData?.platform ?? ''} ${navigator.platform} ${navigator.userAgent}`.toLowerCase();
     if (p.includes('android')) return 'android';
-    if (/iphone|ipod/.test(p)) return 'ios';
+    if (/iphone|ipod|ipad/.test(p)) return 'ios';
+    // Safari on an iPad says Macintosh; no Mac has a touch screen.
+    if (p.includes('mac') && navigator.maxTouchPoints > 1) return 'ios';
     if (p.includes('win')) return 'windows';
     if (p.includes('linux')) return 'linux';
     return 'macos';

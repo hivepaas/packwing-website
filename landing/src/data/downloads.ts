@@ -1,7 +1,11 @@
 // The release the download section offers, and its files: named as packwing's
 // release names them (docs/updates.md). A new release changes VERSION only.
+//
+// The App Store's app is not one of these files and has its own version there,
+// which its page says: VERSION is the desktop release alone, and storeApps
+// names no version at all.
 
-import { GITHUB_URL } from './site';
+import { APP_STORE_URL, GITHUB_URL } from './site';
 
 export const VERSION = '0.4.0';
 export const RELEASE_URL = `${GITHUB_URL}/releases/tag/v${VERSION}`;
@@ -36,6 +40,22 @@ export interface Os {
   /** How its Mac App Store app differs from these files, when the site offers it
    * (SHOW_APP_STORE). */
   appStore?: string;
+}
+
+/** A system whose app comes from a store, with no file to download here. */
+export interface StoreApp {
+  id: OsId;
+  name: string;
+  requires: string;
+  /** The store's page for the app. */
+  href: string;
+  /** The row that leads there: its label, and what it says beside it. */
+  label: string;
+  note: string;
+  /** How to install it, in a few steps. */
+  steps: string[];
+  /** The first launch: what the system asks. */
+  firstRun: string;
 }
 
 /** A system with an app on the way: a tab that says so, and no files. */
@@ -210,12 +230,28 @@ install -m 755 pkw_${v}_macos_aarch64/pkw ~/.local/bin/pkw
   },
 ];
 
-export const comingSoon: ComingSoon[] = [
+// packwing for iPhone and iPad, on the App Store since November 2026. The Mac
+// app of the same record is not approved yet: that one is SHOW_APP_STORE.
+export const storeApps: StoreApp[] = [
   {
     id: 'ios',
     name: 'iOS',
-    text: 'packwing for iPhone and iPad is coming soon, to open the archives you are sent.',
+    requires: 'iOS 26 or iPadOS 26 or later, on iPhone and iPad',
+    href: APP_STORE_URL,
+    label: 'App Store',
+    note: 'iPhone and iPad · free, with Pro in the app',
+    steps: [
+      'Open the App Store page and install it, as you would any app.',
+      'Open an archive from Files, or send one to packwing from Mail, Messages or any app’s share sheet.',
+      'Pro, which signs files and holds any number of network storages, is a monthly or yearly subscription bought in the app, on every iPhone, iPad and Mac signed in to your Apple Account.',
+      'The App Store updates it.',
+    ],
+    firstRun:
+      'Installed by the App Store, so iOS asks nothing the first time. It needs iOS 26, and an iPhone or iPad on an older system cannot run it yet.',
   },
+];
+
+export const comingSoon: ComingSoon[] = [
   {
     id: 'android',
     name: 'Android',

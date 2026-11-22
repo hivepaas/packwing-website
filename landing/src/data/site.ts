@@ -11,9 +11,13 @@ export const TRACEWING_URL = 'https://tracewing.app';
 // still built, as the app's Settings › License opens it for Buy and Renew.
 export const SHOW_PRICING = false;
 
-// packwing on the Mac App Store, and whether the site offers it: in the macOS
-// downloads and the FAQ. Off until Apple has approved the app, as the link
-// leads nowhere before.
+// packwing on the App Store: one record for iPhone, iPad and Mac, so one
+// address. No storefront in it (no /vn/, no /us/), so Apple sends a visitor to
+// their own store. The iOS app is there, and the iOS downloads link to it.
+//
+// SHOW_APP_STORE is about the Mac app alone, which Apple has not approved yet:
+// until it does, the note in the macOS downloads and the FAQ entry beside it
+// would promise a Mac app this page cannot deliver.
 export const APP_STORE_URL = 'https://apps.apple.com/app/id6834744685';
 export const SHOW_APP_STORE = false;
 
